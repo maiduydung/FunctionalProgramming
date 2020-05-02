@@ -1,6 +1,22 @@
 
 (* Tail recursion *)
+  (* The value passed to the recursion is aldready calculated before *)
+  
+  (*Tail recursion*)
+  let factorial n = 
+    let rec fac_iterate result n = 
+      if n <= 0 then result
+      else
+        let result' = result * n in
+        fac_iterate result' (n - 1) (* At this point, all variable's values above are known*)
+    in fac_iterate 1 n;;
 
+  (* Non-tail recursion *)
+  let factorial n = 
+    if(n <= 0) then 1
+    else n*factorial(n-1);; (*Returning value of this statement is not known*)
+
+(*Approach: use a recusive iterate function within the main one, and temp variables to pass to the iterate func*)
 
 (* Pattern matching *)
     (*similar to a switch statement*)
@@ -126,3 +142,18 @@ let flip = function
     
   sum_3 [7;3;2];;
     (* - : int = 12 *)
+
+
+(* Polymorphic functions *)
+
+let func x = x;;
+  (* val func : 'a -> 'a = <fun> *)
+
+  (* func 1;;
+  - : int = 1 *)
+  
+  (* func (10,9);;
+  - : int * int = (10, 9) *)
+
+  (* func (fun x -> x + 1);;
+  - : int -> int = <fun> *)
