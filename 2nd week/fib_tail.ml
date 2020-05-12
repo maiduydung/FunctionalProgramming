@@ -1,7 +1,7 @@
 let fib n =
   let rec iter fnum1 fnum2 i =
-    if i = n then fnum1 + fnum2 + fnum2
-    else iter (fnum2) (fnum1 + fnum2) (i+1)
+    if i = n then fnum1 + fnum2
+    else iter (fnum1 + fnum2) fnum1 (i+1)
   in match n with
     0 -> 0
     | 1 -> 1
