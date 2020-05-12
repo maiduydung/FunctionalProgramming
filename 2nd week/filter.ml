@@ -1,30 +1,18 @@
-List.fold_left (+) 0 [1;2;3];;
+(* Interate through the list, 
+if an element statisfies the condition, then append to the result
+else continue at the next index
 
-let length lst = 
-  List.fold_left (fun x _ -> x + 1) 0 lst;;
-
-
-let rec filter_lst lst exp =
-  List.fold_left exp 0 lst;;
-
-filter_lst [1;2;3;4;5;6] (fun x _ -> x mod 2 = 0)
+when reach the end of list, return result *)
 
 
-(* --------------- *)
-let rec fold f x xs = 
-  match xs with 
-    hd::tl -> fold f (f x hd) tl
-    | [] -> x;;
+List.filter (fun x -> x mod 2 = 0) [1;2;3;4;5;6];;
 
-let sum = fold (+) 0;;
-sum [1;2;3];;
-(* ---------------------- *)
 
-let filter_lst expression lst =
-  let rec fold f x xs = 
-    match xs with 
-      hd::tl -> fold f (f x hd) tl
-      | [] -> x
-    in fold expression lst;;
+let filter exp xs = 
+  let rec filter_iter res xs =
+    match xs with
+      hd::tl -> if exp hd then hd::(filter_iter res tl) else filter_iter res tl
+    | [] -> res
+  in filter_iter [] xs;;
 
-filter_lst (fun x _ -> x mod 2 = 0) [1;2;3;4;5;6] ;;
+filter (fun x -> x mod 2 = 0) [1;2;3;4;5;6];;
