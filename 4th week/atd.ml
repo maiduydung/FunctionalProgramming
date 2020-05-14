@@ -7,8 +7,9 @@ type lat_lng_op =
 
 let north_of_iniad llo = 
   match llo with
-    Values (lat,_) -> true
-  | Null -> false
+    Values (lat,_) when lat > 35.780246 -> Some(true)
+  | Values (_, _) -> Some(false)
+  | Null -> None
 ;;
 
 let akabane_st = Values(35.780246, 139.7156);;
