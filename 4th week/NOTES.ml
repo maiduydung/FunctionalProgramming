@@ -38,3 +38,41 @@ print_endline ("Hi, " ^ name ^ ".");;
 
 Printf.printf "%d %08x %b %s\n" 12 345 false "Hello";;
 Scanf.sscanf
+
+
+(* Representation of States using Mutable Types *)
+
+  let a = ref 0;;
+
+  !a;;
+
+  a := 3;;
+
+  !a;;
+
+  a := !a + 1;;
+
+  !a;;
+
+  (* Counting how many times count() has been call *)
+  let cnt = ref 0;;
+  let count()=
+    cnt := !cnt + 1;
+    !cnt;;
+  count();;
+
+  (*Better yet*)
+
+  let count = 
+    let cnt = ref 0 in
+    fun() -> cnt := !cnt + 1; !cnt
+
+
+  (* Mutable *)
+  (* Enables assigning value with <- operator*)
+
+  type bank_account = {name: string; mutable amount:int};;
+
+  let alice = {name = "Mai"; amount = 10000};;
+  alice.amount <- alice.amount + 3000;;
+  alice;;
