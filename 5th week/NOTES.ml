@@ -20,3 +20,11 @@ module Bank:
   struct
     (* module content *)
   end
+
+  (* compile foo.ml, bar.ml and link them together *)
+  (* 
+    ocamlc -c foo.ml -o foo.cmo
+    ocamlc -c bar.ml -o bar.cmo
+    ocamlc foo.cmo bar.cmo -o a.out 
+  *)
+
