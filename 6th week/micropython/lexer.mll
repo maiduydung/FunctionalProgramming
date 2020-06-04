@@ -43,6 +43,8 @@ rule token = parse
     { PLUS }
   | '-'
     { MINUS }
+  | '*'
+    { ASTERISK }
   | '='
     { ASSIGN }
   | ':'

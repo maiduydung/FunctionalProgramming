@@ -21,6 +21,18 @@ let rec eval_expr env expr =
           | IntValue(i1), IntValue(i2) -> IntValue(i1 - i2)
           | _ -> failwith "type error"
         end
+        | MulOp ->
+        begin
+          match v1, v2 with
+          | IntValue(i1), IntValue(i2) -> IntValue(i1 * i2)
+          | IntValue(i1), StrValue(i2) | StrValue(i2), IntValue(i1) ->
+                  let rec iter s count =
+                    if count <  IntValue(i1) then StrValue(s ^ s) 
+                    else iter s IntValue(IntValue(count)+1)
+                  in
+                  StrValue(iter StrValue(i2) IntValue(i1 )
+          | _ -> failwith "type error"
+        end
       | EqOp -> BoolValue(v1 = v2)
       | NeqOp -> BoolValue(v1 <> v2)
     end
@@ -44,3 +56,4 @@ and eval_stmt env stmt =
 
 and eval_stmt_list env stmt_list =
   List.iter (eval_stmt env) stmt_list
+

@@ -10,6 +10,7 @@ type pyvalue =
 and pybinop =
     AddOp
   | SubOp
+  | MulOp
   | EqOp
   | NeqOp
 
