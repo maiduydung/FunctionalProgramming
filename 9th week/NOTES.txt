@@ -1,0 +1,11 @@
+Deterministic Finite Automata
+    Virtual machine state starting from initial one, continuing at every input
+    Defined as 5 element tuple
+
+Regular Expressions and Finite Automata
+    non-determinism: 
+        multiple transition destination
+        if there is only 1 transition accepted, accept input
+    
+    epsilon-transition:
+        transition without having any input
