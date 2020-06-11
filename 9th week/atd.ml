@@ -1,3 +1,7 @@
+(* Fill in so that the last value you executed the code below is “-: int = 1”
+Fill in so that the last value you executed the code below is “-: int = 2”
+Fill in so that the last value you executed the code below is “-: int = 3” *)
+
 type 'a solo = 'a
 type ('a, 'b) duo = 'a * 'b
 type ('a, 'b, 'c) trio = 'a * 'b * 'c
