@@ -27,10 +27,10 @@ let rec eval_expr env expr =
           | IntValue(i1), IntValue(i2) -> IntValue(i1 * i2)
           | IntValue(i1), StrValue(i2) | StrValue(i2), IntValue(i1) ->
                   let rec iter s count =
-                    if count <  IntValue(i1) then StrValue(s ^ s) 
-                    else iter s IntValue(IntValue(count)+1)
+                    if count <=  0 then s
+                    else s^iter s (count-1)
                   in
-                  StrValue(iter StrValue(i2) IntValue(i1 )
+                  StrValue (iter (i2) (i1) )
           | _ -> failwith "type error"
         end
       | EqOp -> BoolValue(v1 = v2)

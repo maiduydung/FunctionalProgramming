@@ -20,6 +20,7 @@ type token =
   | ELSE
   | DEDENT
   | COLON
+  | ASTERISK
   | ASSIGN
 
 (* This exception is raised by the monolithic API functions. *)

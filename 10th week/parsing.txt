@@ -1,0 +1,14 @@
+3 + 5 * 8
+
+operator * has higher associativity than +
+
+Shift INT 3
+Reduce INT 3 -> expr
+Shift +
+Shift INT 5
+Reduce INT 5 -> expr
+Shift *
+Shift INT 8
+Reduce INT 8 -> expr
+Reduce expr * expr
+Reduce expr + expr
