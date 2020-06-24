@@ -1,12 +1,12 @@
 let rec remove xs n = 
   match xs with 
     hd::tl -> 
-      if n > 0 then 
+      if n > 0 then hd :: remove tl (n-1)
 
-      else if n = 0 then 
+      else if n = 0 then tl
 
 
-      else
+      else failwith "error"
 
   | [] -> []
 
