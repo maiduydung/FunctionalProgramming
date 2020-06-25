@@ -18,3 +18,14 @@
     Add of pyexpr * pyexpr
   | Mul of pyexpr * pyexpr
   | Value of pyvalue
+
+For languages requires type deleclaration like C
+1. Create evironment to include all global and local variables 
+2. From local variables, create local environment
+  local_env = 
+  {
+    "x" : IntType;
+    "y" : IntType;
+    "z" : IntType;
+  }
+3. check return type correspond to function type
