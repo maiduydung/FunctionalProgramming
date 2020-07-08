@@ -7,3 +7,9 @@ Register Allocation
         
         K-normal form not optimal for register allocation
           variable values may change
+          -> need to assume the variable is going to be changed later
+          ->convert to functional programming style, where variables cant be changed
+        
+        Register allocation corresponds to coloring problem
+          ->check included graph  
+          Find out how long each variable live, so that there's no other same color variable exist at the same time 
