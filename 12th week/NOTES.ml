@@ -5,3 +5,5 @@ Register Allocation
         Reusing registers: assigning new value replacing no longer needed value
         Coalescing variable: allocate same register for multiple variable with the same value
         
+        K-normal form not optimal for register allocation
+          variable values may change
