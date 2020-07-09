@@ -37,5 +37,19 @@ Constraints Related to Register Allocation
           -> can allocate registers for variable used as arguments/return values
                 to reduce register copying
 
-    register value cant be modified if it's used be the caller
+    register value cant be modified if it's used by the caller
 
+    Caller-saved register
+      Can be modified within function
+      Functions can use freely
+      When modified, back up the previous value, then restore (describe above)
+
+    Callee-saved register
+      Cannot be modified within function
+      Caller does not need to backup
+
+      if variable lives after function call 
+        callee save
+      
+      else
+        caller-save as much as possible
