@@ -153,3 +153,29 @@ let div x y =
   if y <> 0 then Some(x/y) else None;
 
   
+
+(* ---------------------------- *)
+(* Binary tree *)
+type 'a btree = 
+  Node of 'a * 'a btree * 'a btree
+| Leaf;;
+
+let t2 = Node(1, Node(2,Node(4, Leaf, Node(5, Leaf, Leaf)) ,Leaf), Node(7,(Node(6, Leaf, Leaf)),(Node(8, Leaf, Node(9, Leaf, Leaf)))));;
+
+Node (123, Leaf, t2);;
+
+let t1 = Node(1, (Node(2,Leaf, (Node(3,Leaf,Leaf)))),(Node(4,Leaf,Leaf)));;
+
+let rec depth tree = 
+  match tree with 
+  Node(_, t1, t2) -> 1 + max (depth t1) (depth t2) 
+  | Leaf -> 0;;
+
+depth t2;;
+
+let btree = Node(1, Node(2, Leaf, Node(3, Leaf, Leaf)), Node(4, Leaf, Leaf))
+
+
+let rec in_order = function
+  | Leaf -> []
+  | Node(i,l,r) -> in_order l @ (i :: in_order r);;
