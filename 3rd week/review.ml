@@ -179,3 +179,4 @@ let btree = Node(1, Node(2, Leaf, Node(3, Leaf, Leaf)), Node(4, Leaf, Leaf))
 let rec in_order = function
   | Leaf -> []
   | Node(i,l,r) -> in_order l @ (i :: in_order r);;
+  (* Appending value from left traversal to the list of i and right trversal with :: operator *)
