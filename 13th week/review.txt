@@ -1,0 +1,74 @@
+(* Register spilling *)
+
+x = a + b;
+y = a - b;
+print(y);
+print(x);
+print(b);
+print(a);
+
+
+Now we only have %r0 %r1 %r2
+
+%r2 = %r0 + %r1;
+Save(%r2);
+%r2 = %r0 - %r1;
+print(%r2);
+Restore(%r2);
+print(%r2);
+print(%r1);
+print(%r0);
+======================================================
+
+
+Now we have %r0 %r1 %r2 %r3
+
+a = 1;
+b = 2;
+c = a * b;
+d = a + 1;
+e = d * 2;
+
+f = e * b;
+g = d + e;
+h = f + b;
+
+i = a + h;
+
+
+
+%r0 = 1;         #a
+%r1 = 2;         #b
+%r2 = %r0 * %r1; #c
+%r3 = %r0 + 1;   #d
+Save(a, %r0);
+%r3 = %r3 * 2;   #e
+
+%r2 = %r3 * %r1; #f
+Restore(a, %r0);
+%r0 = %r0 + %r3; #g
+%r2 = %r2 + %r1; #h
+
+%r2 = %r0 + %r2; #i
+
+=======================================================
+
+
+int fact(int n)
+{
+    int tmp1, tmp2, tmp3;
+
+    tmp1 = n - 1;
+    tmp2 = fact(tmp1);
+    tmp3 = n * tmp2;
+    return tmp3;
+}
+
+int fact (int %rdi){
+  Save(x, %rdi);
+  %rdi = %rdi - 1
+  %rsi = fact(%rdi);
+  Restore(x, %rdi);
+  %rax = %rsi * %rdi;
+  return %rax;
+}
