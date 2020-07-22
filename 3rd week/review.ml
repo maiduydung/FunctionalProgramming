@@ -186,7 +186,7 @@ let rec in_order = function
 
 
 
-  
+
 (* Syntax tree for mathematical expression *)
 type expression = 
   Binop of char * expression * expression
@@ -208,3 +208,54 @@ let rec eval expr =
   | Number(x) -> x;;
 
 
+(* ============================================ *)
+type expr = 
+  Add of expr * expr
+| Mul of expr * expr
+| Val of int
+| X ;;(* Variable x  *)
+
+
+let rec eval expr x = 
+  match expr with
+    Add(l, r) -> eval l x + eval r x
+  | Mul(l, r) -> eval l x * eval r x
+  | Val (v) -> v
+  | X -> x;;
+
+
+(* ======================================= *)
+
+type 'a b_tree = 
+  Node of 'a * 'a b_tree * 'a b_tree
+| Leaf;;
+
+(* Find a value in binary tree, return true if found *)
+
+let rec find a b_tree = 
+  match b_tree with 
+  Node(a', l, r) -> 
+    if a = a' then true 
+    else  find a l || find a r
+
+  | Leaf -> false;;
+
+
+
+
+  (* Counting the number of elements in binary trees *)
+
+  let rec count_bst tr = 
+    match tr with 
+      Node(_, tr1, tr2) -> 1 + (count_bst tr1) + (count_bst tr2)
+      | Leaf -> 0
+  ;;
+
+
+  
+
+  let rec get_min tr = 
+    match tr with 
+      Node(v, Leaf, _) -> v
+    | Node(_, tr1, _) -> get_min tr1
+    |Leaf -> None;;
