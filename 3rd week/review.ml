@@ -180,3 +180,31 @@ let rec in_order = function
   | Leaf -> []
   | Node(i,l,r) -> in_order l @ (i :: in_order r);;
   (* Appending value from left traversal to the list of i and right trversal with :: operator *)
+
+
+
+
+
+
+  
+(* Syntax tree for mathematical expression *)
+type expression = 
+  Binop of char * expression * expression
+  | Number of int;;
+
+
+let math_tree = Binop('+', Number(2), Binop('*', Binop('-',Number(5), Number(3)),Number(4)));;
+
+
+
+(* Evaluate expression *)
+let rec eval expr = 
+  match expr with 
+    Binop('+', l, r) -> eval l + eval r
+  | Binop('-', l, r) -> eval l - eval r
+  | Binop('*', l, r) -> eval l * eval r
+  | Binop('/', l, r) -> eval l / eval r
+  | Binop(a, _, _) -> 0
+  | Number(x) -> x;;
+
+
