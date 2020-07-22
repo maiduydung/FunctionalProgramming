@@ -1,0 +1,43 @@
+x = x + b;
+y = x + b;
+y = x + b;
+
+
+x1 = x0 + b;
+y0 = x1 + b;
+y1 = x0 + b;
+
+//removing common eprs
+x1 = x0 + b;
+y0 = x1 + b;
+y1 = y0;
+
+--------------------------------------
+
+    x = 5
+    x = x - 3
+    if (x < 3)
+        y = x * 2
+        w = y
+    else
+        y = x - 3
+
+    w = x - y
+    z = x + y
+
+
+
+    x0 = 5
+    x1 = x0 - 3
+    if (x1 < 3)
+        y0 = x1 * 2
+        w0 = y0
+    else 
+        y1 = x1 - 3
+
+    y2 = phi(y0, y1);
+    w = x1 - y2
+    z0 = x1 + y2
+
+
+
